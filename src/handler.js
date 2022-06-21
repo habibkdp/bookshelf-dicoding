@@ -135,9 +135,11 @@ const getBookById = (request, h) => {
 const editBookById = (request, h) => {
   const { id } = request.params;
   const {
-    name, year, author, summary, publisher, pageCount, readPage, finished, reading,
+    name, year, author, summary, publisher, pageCount, readPage, reading,
   } = request.payload;
-  const updatedAt = new Date().toISOString;
+
+  const updatedAt = new Date().toISOString();
+  const finished = pageCount === readPage;
 
   const index = books.findIndex((book) => book.id === id);
 
